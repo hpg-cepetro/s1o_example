@@ -1,0 +1,12 @@
+[submodule "include/ex3"]
+	path = include/ex3
+	url = https://github.com/Caian/ex3
+[submodule "include/f1d"]
+	path = include/f1d
+	url = https://github.com/Caian/f1d
+[submodule "include/s1o"]
+	path = include/s1o
+	url = https://github.com/Caian/s1o
+[submodule "include/z0rg"]
+	path = include/z0rg
+	url = https://github.com/Caian/z0rg
