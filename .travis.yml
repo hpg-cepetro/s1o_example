@@ -1,0 +1,43 @@
+dist: trusty
+sudo: false
+language: cpp
+
+git:
+  submodules: true
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+      - git
+      - cmake
+
+before_install:
+  # Set the extra prefix for external libraries and tools
+  - export INCLUDE_DIR="$PWD/include"
+  - pushd "$INCLUDE_DIR"
+  # Get boost
+  - wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
+  - tar -xzf boost_1_69_0.tar.gz
+  - rm boost_1_69_0.tar.gz
+  - export BOOST_DIR="$INCLUDE_DIR/boost"
+  - mv "boost_1_69_0/boost" "$BOOST_DIR"
+  # No need to exit boost
+  # Exit extra
+  - popd
+
+script:
+  # Save some directories
+  - export PROJECT_DIR="$PWD"
+  - export BUILD_DIR="$PROJECT_DIR/build"
+  # Print some information
+  - echo "Current dir is $PWD"
+  - echo "Boost dir is $BOOST_DIR"
+  # Create the build directory
+  - mkdir -p "$BUILD_DIR" && pushd "$BUILD_DIR"
+  # Build
+  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - make -j
+  - popd

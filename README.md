@@ -1,6 +1,8 @@
 s1o_example
 ===========
 
+[![Build Status](https://travis-ci.org/hpg-cepetro/s1o_example.svg?branch=master)](https://travis-ci.org/hpg-cepetro/s1o_example)
+
 This is an example on how to use the Spatial IO project (s1o) with seismic data in the Seismic Unix (SU) format.
 
 This project contains three programs:
